@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>Page Title</title>
+    <meta property="og:title" content="Page Title">
+    <meta name="description" content="A description of the page">
+    <meta property="og:description" content="A description of the page">
+    <meta property="og:url" content="https://example.com">
+
+
+    <!-- todo - icons -->
+    <meta property="og:image" content="/icons/preview.png">
+    <!-- todo - color -->
+    <meta name="theme-color" content="#fff"/>
+
+    <meta name="fediverse:creator" content="@robb@social.lol">
+    
+    <link href="/assets/css/style.css" type="text/css" rel="stylesheet"/>
+  </head>
+
+  <body>
+    <header class="">
+        <h1 class="marker">Mildliner Reference</h1>
+        <p>A guide to all the <a href="https://www.zebrapen.com/pages/discover-mildliner">Mildliner</a> colors and sets.</p>
+        <p><strong>There are currently {{ mildliners | length }} Mildliner colors in {{ mildliners | groupby('set') | length }} sets available.</strong></p>
+        <p>A <a href="https://rknight.me">Robb Knight</a> curio</p>
+    </header>
+    <div class="mildliner-wrap">
+        {% set currentSet = mildliners[0].set %}
+
+        {% for ml in mildliners %}
+            {% if ml.set !== currentSet or loop.index == 1 %}
+                {% if loop.index > 1 %}
+                    </div>
+                    </div>
+                {% endif %}
+                {% set currentSet = ml.set %}
+                <div class="mildliner-set scribble-border">
+                <h1 class="marker">{{ currentSet }}</h1>
+                <div class="mildliner-singles">
+                {% if ml.set !== currentSet %}
+                    </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+            <div class="mildliner" style="background-color: #{{ ml.color }}; border-color: #{{ ml.color }};">
+                <h2>{{ ml.name }}</h2>
+                <p class="mildliner-color" data-color="#{{ ml.color }}">#{{ ml.color }} {% if ml.note %}{{ ml.note }}{% endif %}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        document.querySelectorAll('.mildliner').forEach((el) => {
+            el.addEventListener('click', () => {
+                const colorEl = el.querySelector('.mildliner-color');
+                const color = colorEl.dataset.color;
+                navigator.clipboard.writeText(color).then(() => {
+                    const previous = colorEl.innerHTML
+                    colorEl.innerHTML = `<span class="copied">copied!</span>`;
+                    setTimeout(() => {
+                        colorEl.innerHTML = previous
+                    }, 1000)
+                }, () => {
+                    console.error('Failed to copy color')
+                })
+            })
+        })
+    </script>
+  </body>
+</html>

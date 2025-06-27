@@ -1,0 +1,78 @@
+/* import fonts fropm local files */
+
+
+@font-face {
+    font-family: 'Boochild';
+    src: url('/assets/fonts/Boochild.woff2') format('woff2'),
+         url('/assets/fonts/Boochild.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif;
+    font-weight: normal;
+    margin: 0;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.scribble-border {
+    border-style: solid;
+    border-width: 10px 10px 10px 10px;
+    border-image: url('/assets/img/border.svg') 10 10 10 10 stretch stretch;
+}
+
+header {
+    text-align: center;
+}
+
+.mildliner-singles {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.mildliner h2,
+.mildliner p {
+    margin: 0;
+}
+
+.mildliner p {
+    font-weight: bold;
+    font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+    letter-spacing: 0.1em;;
+}
+
+.mildliner h2 {
+    margin-bottom: 0.3em;
+}
+
+.mildliner h2,
+.marker {
+    font-family: 'Boochild', sans-serif;
+    letter-spacing: 0.2em;
+}
+
+.mildliner{
+    padding: 15px 10px;
+    text-align: center;
+}
+
+.mildliner-set h1 {
+    text-align: center;
+}
+
+.mildliner {
+    border-width: 1px;
+    border-style: solid;
+}
+.mildliner:hover {
+    cursor: pointer;
+    border-color: #868a8b!important;
+}
+
+.copied {
+    color: #356f35;
+}

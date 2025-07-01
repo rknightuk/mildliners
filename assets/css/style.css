@@ -24,6 +24,14 @@ header p {
     margin: 0.2em;
 }
 
+a {
+    color: #fa5dcd;
+}
+
+.color-peek {
+    margin-top: -10px;
+}
+
 hr {
     margin-top: 1.5em;
     margin-bottom: 1.5em;

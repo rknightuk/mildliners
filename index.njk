@@ -42,6 +42,8 @@
         <input type="radio" id="radio-color" name="sorting" value="radio-color">
         <label for="radio-color">By color</label>
 
+        {% set comma = joiner() %}
+
         <div id="by-color">
             {% set colorKeys = mildliners.color | objectKeys %}
             {% set currentColor = colorKeys[0] %}
@@ -49,6 +51,7 @@
             {% for color in colorKeys %}
                 <div class="mildliner-set">
                     <h1 class="marker">{{ color }}</h1>
+                    <p class="color-peek"><a href="https://colorpeek.com#{% for h in mildliners.color[color] %}{{ comma() }}{{ h.color }}{% endfor %}" target="_blank">view on colorpeek</a></p>
                     {% for ml in mildliners.color[color] %}
                         <div class="mildliner">
                             <div class="mildliner-bg">
@@ -73,6 +76,7 @@
             {% for set in setKeys %}
                 <div class="mildliner-set">
                     <h1 class="marker">{{ set }}</h1>
+                    <p class="color-peek"><a href="https://colorpeek.com#{% for h in mildliners.set[set] %}{{ comma() }}{{ h.color }}{% endfor %}" target="_blank">view on colorpeek</a></p>
                     {% for ml in mildliners.set[set] %}
                         <div class="mildliner">
                             <div class="mildliner-bg">

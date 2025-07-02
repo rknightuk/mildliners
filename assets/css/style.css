@@ -32,6 +32,14 @@ a {
     margin-top: -10px;
 }
 
+.mildliner-svg svg {
+    height: 40px;
+    text-align: center;
+    display: flex;
+    margin: 1em auto;
+    max-width: 100%;
+}
+
 hr {
     margin-top: 1.5em;
     margin-bottom: 1.5em;

@@ -1,99 +1,121 @@
-const PINK = { name: 'Pink', color: 'ffb6d9' }
-const ORANGE = { name: 'Orange', color: 'ffdfb5' }
-const YELLOW = { name: 'Yellow', color: 'f0f4a3' }
-const BLUE = { name: 'Blue', color: '98d5e8' }
-const BLUE_GREEN = { name: 'Blue Green', color: 'a1d0ca' }
-const GREEN = { name: 'Green', color: 'b0d492' }
-const DARK_BLUE = { name: 'Dark Blue', color: '8ea7c8' }
-const GRAY = { name: 'Gray', color: 'bdc7c4' }
-const VIOLET = { name: 'Violet', color: 'b7abc8' }
-const RED = { name: 'Red', color: 'dd7e92' }
-const SMOKE_BLUE = { name: 'Smoke Blue', color: 'a9d0ce' }
-const VERMILLION = { name: 'Vermillion', color: 'ffa488' }
-const GOLD = { name: 'Gold', color: 'fcd97d' }
-const MAGENTA = { name: 'Magenta', color: 'e27fd2' }
-const BROWN = { name: 'Brown', color: 'ca9e8b' }
-const FUCHSIA = { name: 'Fuchsia', color: 'f3badf' }
-const MARIGOLD = { name: 'Marigold', color: 'e26650' }
-const CITRUS_GREEN = { name: 'Citrus Green', color: 'e3e766' }
-const SUMMER_GREEN = { name: 'Summer Green', color: '64bda7' }
-const LAVENDER = { name: 'Lavender', color: '64649e' }
-const LEMON_YELLOW = { name: 'Lemon Yellow', color: 'fdf284' }
-const APRICOT = { name: 'Apricot', color: 'f2b071' }
-const CORAL_PINK = { name: 'Coral Pink', color: 'feb2b8' }
-const CYAN = { name: 'Cyan', color: '7bc9d3' }
-const DARK_GRAY = { name: 'Dark Gray', color: '83827b' }
-const COPPER = { name: 'Copper', color: 'dfa16c', note: '(US only)' }
-const BEIGE = { name: 'Beige', color: 'd4bd8d' }
-const CREAM = { name: 'Cream', color: 'f7e4bb' }
-const COOL_GRAY = { name: 'Cool Gray', color: 'd2d2cd' }
-const OLIVE = { name: 'Olive', color: 'd8cf96' }
-const DUSTY_PINK = { name: 'Dusty Pink', color: 'fcb9c2', note: '(Japan only)' }
-const HONEY_ORANGE = { name: 'Honey Orange', color: 'f3cca3' }
-const SHERBERT_YELLOW = { name: 'Sherbert Yellow', color: 'f2ee8e' }
-const SODA_BLUE = { name: 'Soda Blue', color: 'a1d7e1' }
-const LILAC = { name: 'Lilac', color: 'dbc1d3' }
-const BABY_PINK = { name: 'Baby Pink', color: 'f3c2ca' }
-const IRIS = { name: 'Iris', color: 'cdc4d6' }
-const SMOKE_RED = { name: 'Smoke Red', color: 'e5bdc5' }
-const MIMOSA_YELLOW = { name: 'Mimosa Yellow', color: 'd3ce99' }
-const MINT = { name: 'Mint', color: 'c5d7d0' }
-const MOSS_GREEN = { name: 'Moss Green', color: '96bab6' }
+const all = {
+	PINK: { name: 'Pink', color: 'ffb6d9' },
+	ORANGE: { name: 'Orange', color: 'ffdfb5' },
+	YELLOW: { name: 'Yellow', color: 'f0f4a3' },
+	BLUE: { name: 'Blue', color: '98d5e8' },
+	BLUE_GREEN: { name: 'Blue Green', color: 'a1d0ca' },
+	GREEN: { name: 'Green', color: 'b0d492' },
+	DARK_BLUE: { name: 'Dark Blue', color: '8ea7c8' },
+	GRAY: { name: 'Gray', color: 'bdc7c4' },
+	VIOLET: { name: 'Violet', color: 'b7abc8' },
+	RED: { name: 'Red', color: 'dd7e92' },
+	SMOKE_BLUE: { name: 'Smoke Blue', color: 'a9d0ce' },
+	VERMILLION: { name: 'Vermillion', color: 'ffa488' },
+	GOLD: { name: 'Gold', color: 'fcd97d' },
+	MAGENTA: { name: 'Magenta', color: 'e27fd2' },
+	BROWN: { name: 'Brown', color: 'ca9e8b' },
+	FUCHSIA: { name: 'Fuchsia', color: 'f3badf' },
+	MARIGOLD: { name: 'Marigold', color: 'e26650' },
+	CITRUS_GREEN: { name: 'Citrus Green', color: 'e3e766' },
+	SUMMER_GREEN: { name: 'Summer Green', color: '64bda7' },
+	LAVENDER: { name: 'Lavender', color: '64649e' },
+	LEMON_YELLOW: { name: 'Lemon Yellow', color: 'fdf284' },
+	APRICOT: { name: 'Apricot', color: 'f2b071' },
+	CORAL_PINK: { name: 'Coral Pink', color: 'feb2b8' },
+	CYAN: { name: 'Cyan', color: '7bc9d3' },
+	DARK_GRAY: { name: 'Dark Gray', color: '83827b' },
+	COPPER: { name: 'Copper', color: 'dfa16c', note: '(US only)' },
+	BEIGE: { name: 'Beige', color: 'd4bd8d' },
+	CREAM: { name: 'Cream', color: 'f7e4bb' },
+	COOL_GRAY: { name: 'Cool Gray', color: 'd2d2cd' },
+	OLIVE: { name: 'Olive', color: 'd8cf96' },
+	DUSTY_PINK: { name: 'Dusty Pink', color: 'fcb9c2', note: '(Japan only)' },
+	HONEY_ORANGE: { name: 'Honey Orange', color: 'f3cca3' },
+	SHERBERT_YELLOW: { name: 'Sherbert Yellow', color: 'f2ee8e' },
+	SODA_BLUE: { name: 'Soda Blue', color: 'a1d7e1' },
+	LILAC: { name: 'Lilac', color: 'dbc1d3' },
+	BABY_PINK: { name: 'Baby Pink', color: 'f3c2ca' },
+	IRIS: { name: 'Iris', color: 'cdc4d6' },
+	SMOKE_RED: { name: 'Smoke Red', color: 'e5bdc5' },
+	MIMOSA_YELLOW: { name: 'Mimosa Yellow', color: 'd3ce99' },
+	MINT: { name: 'Mint', color: 'c5d7d0' },
+	MOSS_GREEN: { name: 'Moss Green', color: '96bab6' },
+}
+
+const stepsExample = [
+    '10% { color: hsl(360, 65%, 45%); }',
+]
+
+let steps = []
+
+const step = 100 / Object.keys(all).length
+
+for (let i = 0; i < Object.keys(all).length; i++) {
+    if (i === 0) {
+        steps.push(`from, to { color: #${all[Object.keys(all)[i]].color}; }`)
+        continue
+    }
+    const key = Object.keys(all)[i]
+    const color = all[key].color
+    const percentage = step * i
+    steps.push(`${percentage}% { color: #${color}; }`)
+}
 
 module.exports = function () {
     return {
-        count: 41,
+        cssSteps: steps.join('\n'),
+        all: Object.values(all),
         set: {
             Fluorescent: [
-                PINK, ORANGE, YELLOW, BLUE, BLUE_GREEN,
+                all.PINK, all.ORANGE, all.YELLOW, all.BLUE, all.BLUE_GREEN,
             ],
             'Cool and Refined': [
-                GREEN, DARK_BLUE, GRAY, VIOLET, RED,
+                all.GREEN, all.DARK_BLUE, all.GRAY, all.VIOLET, all.RED,
             ],
             Warm: [
-                SMOKE_BLUE, VERMILLION, GOLD, MAGENTA, BROWN,
+                all.SMOKE_BLUE, all.VERMILLION, all.GOLD, all.MAGENTA, all.BROWN,
             ],
             'Refresh Bright': [
-                FUCHSIA, MARIGOLD, CITRUS_GREEN, SUMMER_GREEN, LAVENDER,
+                all.FUCHSIA, all.MARIGOLD, all.CITRUS_GREEN, all.SUMMER_GREEN, all.LAVENDER,
             ],
             Friendly: [
-                LEMON_YELLOW, APRICOT, CORAL_PINK, CYAN, DARK_GRAY,
+                all.LEMON_YELLOW, all.APRICOT, all.CORAL_PINK, all.CYAN, all.DARK_GRAY,
             ],
             'Neutral (US) / Natural (JP)': [
-                COPPER, BEIGE, CREAM, COOL_GRAY, OLIVE, DUSTY_PINK,
+                all.COPPER, all.BEIGE, all.CREAM, all.COOL_GRAY, all.OLIVE, all.DUSTY_PINK,
             ],
             Gentle: [
-                HONEY_ORANGE, SHERBERT_YELLOW, SODA_BLUE, LILAC, BABY_PINK,
+                all.HONEY_ORANGE, all.SHERBERT_YELLOW, all.SODA_BLUE, all.LILAC, all.BABY_PINK,
             ],
             Calm: [
-                IRIS, SMOKE_RED, MIMOSA_YELLOW, MINT, MOSS_GREEN,
+                all.IRIS, all.SMOKE_RED, all.MIMOSA_YELLOW, all.MINT, all.MOSS_GREEN,
             ]
         },
         color: {
             Reds: [
-                RED, MARIGOLD, SMOKE_RED, CORAL_PINK, PINK, BABY_PINK,
+               all. RED, all.MARIGOLD, all.SMOKE_RED, all.CORAL_PINK, all.PINK, all.BABY_PINK,
             ],
             Oranges: [
-                VERMILLION, APRICOT, ORANGE, HONEY_ORANGE,
+                all.VERMILLION, all.APRICOT, all.ORANGE, all.HONEY_ORANGE,
             ],
             Yellows: [
-                GOLD, LEMON_YELLOW, SHERBERT_YELLOW, MIMOSA_YELLOW, YELLOW,
+                all.GOLD, all.LEMON_YELLOW, all.SHERBERT_YELLOW, all.MIMOSA_YELLOW, all.YELLOW,
             ],
             Greens: [
-                CITRUS_GREEN, GREEN, OLIVE, BLUE_GREEN, SUMMER_GREEN, MOSS_GREEN, MINT,
+                all.CITRUS_GREEN, all.GREEN, all.OLIVE, all.BLUE_GREEN, all.SUMMER_GREEN, all.MOSS_GREEN, all.MINT,
             ],
             Blues: [
-                CYAN, SMOKE_BLUE, DARK_BLUE, BLUE, SODA_BLUE,
+                all.CYAN, all.SMOKE_BLUE, all.DARK_BLUE, all.BLUE, all.SODA_BLUE,
             ],
             Purples: [
-                FUCHSIA, LAVENDER, VIOLET, MAGENTA, LILAC, IRIS,
+                all.FUCHSIA, all.LAVENDER, all.VIOLET, all.MAGENTA, all.LILAC, all.IRIS,
             ],
             Browns: [
-                BEIGE, COPPER, BROWN,
+                all.BEIGE, all.COPPER, all.BROWN,
             ],
             Grays: [
-                COOL_GRAY, GRAY, DARK_GRAY,
+                all.COOL_GRAY, all.GRAY, all.DARK_GRAY,
             ],
-        }
+        },
     }
 }

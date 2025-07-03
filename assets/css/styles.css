@@ -14,6 +14,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     background-color: #fffff0;
+    color: #1c1b1a;
 }
 
 header {
@@ -30,6 +31,20 @@ a {
 
 .color-peek {
     margin-top: -10px;
+}
+
+.color-peek svg {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+.color-peek a {
+    text-decoration: none;
+}
+
+.color-peek a:hover {
+    color: #1c1b1a;
 }
 
 .mildliner-svg svg {

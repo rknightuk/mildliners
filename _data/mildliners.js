@@ -31,7 +31,7 @@ const all = {
 	OLIVE: { name: 'Olive', color: 'd8cf96' },
 	DUSTY_PINK: { name: 'Dusty Pink', color: 'fcb9c2', note: '(Japan only)' },
 	HONEY_ORANGE: { name: 'Honey Orange', color: 'f3cca3' },
-	SHERBERT_YELLOW: { name: 'Sherbert Yellow', color: 'f2ee8e' },
+	SHERBET_YELLOW: { name: 'Sherbet Yellow', color: 'f2ee8e' },
 	SODA_BLUE: { name: 'Soda Blue', color: 'a1d7e1' },
 	LILAC: { name: 'Lilac', color: 'dbc1d3' },
 	BABY_PINK: { name: 'Baby Pink', color: 'f3c2ca' },
@@ -85,7 +85,7 @@ module.exports = function () {
                 all.COPPER, all.BEIGE, all.CREAM, all.COOL_GRAY, all.OLIVE, all.DUSTY_PINK,
             ],
             Gentle: [
-                all.HONEY_ORANGE, all.SHERBERT_YELLOW, all.SODA_BLUE, all.LILAC, all.BABY_PINK,
+                all.HONEY_ORANGE, all.SHERBET_YELLOW, all.SODA_BLUE, all.LILAC, all.BABY_PINK,
             ],
             Calm: [
                 all.IRIS, all.SMOKE_RED, all.MIMOSA_YELLOW, all.MINT, all.MOSS_GREEN,
@@ -93,13 +93,13 @@ module.exports = function () {
         },
         color: {
             Reds: [
-               all. RED, all.MARIGOLD, all.SMOKE_RED, all.CORAL_PINK, all.PINK, all.BABY_PINK,
+               all. RED, all.MARIGOLD, all.SMOKE_RED, all.CORAL_PINK, all.PINK, all.BABY_PINK, all.DUSTY_PINK,
             ],
             Oranges: [
                 all.VERMILLION, all.APRICOT, all.ORANGE, all.HONEY_ORANGE,
             ],
             Yellows: [
-                all.GOLD, all.LEMON_YELLOW, all.SHERBERT_YELLOW, all.MIMOSA_YELLOW, all.YELLOW,
+                all.GOLD, all.LEMON_YELLOW, all.SHERBET_YELLOW, all.MIMOSA_YELLOW, all.YELLOW,
             ],
             Greens: [
                 all.CITRUS_GREEN, all.GREEN, all.OLIVE, all.BLUE_GREEN, all.SUMMER_GREEN, all.MOSS_GREEN, all.MINT,
@@ -111,7 +111,7 @@ module.exports = function () {
                 all.FUCHSIA, all.LAVENDER, all.VIOLET, all.MAGENTA, all.LILAC, all.IRIS,
             ],
             Browns: [
-                all.BEIGE, all.COPPER, all.BROWN,
+                all.BEIGE, all.COPPER, all.BROWN, all.CREAM,
             ],
             Grays: [
                 all.COOL_GRAY, all.GRAY, all.DARK_GRAY,

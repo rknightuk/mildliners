@@ -4,8 +4,8 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <title>Mildliners</title>
-    <meta property="og:title" content="Mildliners">
+    <title>Mildliner Color Reference</title>
+    <meta property="og:title" content="Mildliner Color Reference">
     <meta name="description" content="A guide to all the Mildliner colors and sets">
     <meta property="og:description" content="A guide to all the Mildliner colors and sets">
     <meta property="og:url" content="https://mildliners.rknight.me">
@@ -74,9 +74,10 @@
                 <div class="mildliner-set">
                     <h1 class="marker">{{ color }}</h1>
                     <p class="color-peek">
+                        <a href="https://colorpeek.com#{% for h in mildliners.set[set] %}{{ comma() }}{{ h.color }}{% endfor %}" target="_blank">
                         <svg class="icon" style="">
                                     <use xlink:href="#colorpeek"></use>
-                                </svg> <a href="https://colorpeek.com#{% for h in mildliners.color[color] %}{{ comma() }}{{ h.color }}{% endfor %}" target="_blank">view on colorpeek</a>
+                                </svg> view on colorpeek</a>
                     </p>
                     {% for ml in mildliners.color[color] %}
                         <div class="mildliner">

@@ -94,7 +94,7 @@ label:hover {
 .mildliner p {
     font-weight: bold;
     font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
-    letter-spacing: 0.1em;;
+    letter-spacing: 0.1em;
 }
 
 .mildliner h2 {
@@ -106,6 +106,13 @@ label:hover {
     font-family: 'Boochild', sans-serif;
     letter-spacing: 0.2em;
     text-transform: lowercase;
+}
+
+.mildliner h2 svg,
+.marker svg {
+    width: 20px;
+    height: 20px;
+    margin-left: 0.3em;
 }
 
 .mildliner-set {
@@ -161,4 +168,10 @@ label:hover {
 #radio-set:checked ~ #by-color,
 #radio-color:checked ~ #by-set {
     display: none;
+}
+
+.key svg {
+    width: 15px;
+    height: 15px;
+    vertical-align: middle;
 }

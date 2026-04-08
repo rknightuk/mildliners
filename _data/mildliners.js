@@ -65,6 +65,15 @@ module.exports = function () {
     return {
         cssSteps: steps.join('\n'),
         all: Object.values(all),
+        brushSets: [
+            'Fluorescent', 'Cool and Refined', 'Warm', 'Refresh Bright', 'Friendly',
+        ],
+        fineColors: [
+            // set 1
+            all.GRAY.name, all.BROWN.name, all.DARK_BLUE.name, all.RED.name, all.DARK_GRAY.name,
+            // set 2
+            all.GOLD.name, all.APRICOT.name, all.FUCHSIA.name, all.VIOLET.name, all.SUMMER_GREEN.name,
+        ],
         set: {
             Fluorescent: [
                 all.PINK, all.ORANGE, all.YELLOW, all.BLUE, all.BLUE_GREEN,

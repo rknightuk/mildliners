@@ -35,6 +35,7 @@
         <p class="key">
             <svg class="icon" style=""><use xlink:href="#brush"></use></svg> Available in brush tip&nbsp;&nbsp;
             <svg class="icon" style=""><use xlink:href="#fine"></use></svg> Available in fine tip
+            <svg class="icon" style=""><use xlink:href="#mix"></use></svg> Available in mix tip&nbsp;&nbsp;
         </p>
     </header>
 
@@ -68,6 +69,8 @@
         <label for="radio-set">By set</label>
         <input type="radio" id="radio-color" name="sorting" value="radio-color">
         <label for="radio-color">By color</label>
+        <input type="radio" id="radio-mix" name="sorting" value="radio-mix">
+        <label for="radio-mix">Mix</label>
 
         {% set comma = joiner() %}
 
@@ -92,7 +95,7 @@
                                 </svg>
                             </div>
                             <div class="mildliner-info">
-                                <h2>{{ ml.name }}{% if ml.name in mildliners.fineColors %}<svg class="icon" style=""><use xlink:href="#fine"></use></svg>{% endif %}</h2>
+                                <h2>{{ ml.name }}{% if ml.name in mildliners.fineColors %}<svg class="icon" style=""><use xlink:href="#fine"></use></svg>{% endif %} {% if ml.name in mildliners.mixColors %}<svg class="icon" style="margin-left: 0;"><use xlink:href="#mix"></use></svg>{% endif %}</h2>
                                 <p class="mildliner-color" data-color="#{{ ml.color }}">#{{ ml.color }} {% if ml.note %}{{ ml.note }}{% endif %}</p>
                             </div>
                         </div>
@@ -122,11 +125,42 @@
                                 </svg>
                             </div>
                             <div class="mildliner-info">
-                                <h2>{{ ml.name }}{% if ml.name in mildliners.fineColors %}<svg class="icon" style=""><use xlink:href="#fine"></use></svg>{% endif %}</h2>
+                                <h2>{{ ml.name }}{% if ml.name in mildliners.fineColors %}<svg class="icon" style=""><use xlink:href="#fine"></use></svg>{% endif %} {% if ml.name in mildliners.mixColors %}<svg class="icon" style="margin-left: 0;"><use xlink:href="#mix"></use></svg>{% endif %}</h2>
                                 <p class="mildliner-color" data-color="#{{ ml.color }}">#{{ ml.color }} {% if ml.note %}{{ ml.note }}{% endif %}</p>
                             </div>
                         </div>
                     {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+
+        <hr>
+
+        <div id="by-mix">
+            {% for mix in mildliners.mix %}
+                <div class="mildliner-set">
+                    <div class="mildliner">
+                        <div class="mildliner-bg">
+                            <svg class="icon" style="width: 100%;height:100%;color: #{{ mix[0].color }}">
+                                <use xlink:href="#stroke"></use>
+                            </svg>
+                        </div>
+                        <div class="mildliner-info">
+                            <h2>{{ mix[0].name }}</h2>
+                            <p class="mildliner-color" data-color="#{{ mix[0].color }}">#{{ mix[0].color }}</p>
+                        </div>
+                    </div>
+                    <div class="mildliner" style="margin-top: -12px;">
+                        <div class="mildliner-bg">
+                            <svg class="icon" style="width: 100%;height:100%;color: #{{ mix[1].color }}">
+                                <use xlink:href="#stroke"></use>
+                            </svg>
+                        </div>
+                        <div class="mildliner-info">
+                            <h2>{{ mix[1].name }}</h2>
+                            <p class="mildliner-color" data-color="#{{ mix[1].color }}">#{{ mix[1].color }}</p>
+                        </div>
+                    </div>
                 </div>
             {% endfor %}
         </div>
@@ -155,6 +189,10 @@
                 <path id="path2" fill="#000000" fill-rule="evenodd" stroke="none" d="M 522 366 L 522 1620 C 522 1621.104614 522.895447 1622 524 1622 L 871 1622 C 872.104553 1622 873 1621.104614 873 1620 L 873 1068 L 1533 1068 C 1534.104614 1068 1535 1067.104614 1535 1066 L 1535 951 C 1535 949.895447 1534.104614 949 1533 949 L 862 949 L 862 461 L 1543 461 C 1544.104614 461 1545 460.104584 1545 459 L 1545 362 C 1545 360.892365 1544.099731 359.995667 1542.992188 360.000031 L 523.992126 364.000031 C 522.890625 364.004333 522 364.898499 522 366 Z M 524 1620 L 524 366 L 1543 362 L 1543 459 L 860 459 L 860 951 L 1533 951 L 1533 1066 L 871 1066 L 871 1620 L 524 1620 Z"/>
             </g>
             <path fill="#000000" fill-rule="evenodd" stroke="none" d="M 1967 991.5 C 1967 445.085236 1528.602295 2 987.650879 2 C 446.699463 2 8.301762 445.085236 8.301762 991.5 C 8.301762 1537.914795 446.699463 1981 987.650879 1981 C 1528.602295 1981 1967 1537.914795 1967 991.5 Z M 987.650879 32 C 1511.961914 32 1937 461.582764 1937 991.5 C 1937 1521.417236 1511.961914 1951 987.650879 1951 C 463.339844 1951 38.301762 1521.417236 38.301762 991.5 C 38.301762 461.582764 463.339844 32 987.650879 32 Z"/>
+        </svg>
+        <svg viewBox="0 0 1975 1983" xmlns="http://www.w3.org/2000/svg" id="mix">
+            <path id="Circle-copy" fill="#000000" fill-rule="evenodd" stroke="none" d="M 1967 991.5 C 1967 445.085236 1528.602295 2 987.650879 2 C 446.699463 2 8.301762 445.085236 8.301762 991.5 C 8.301762 1537.914795 446.699463 1981 987.650879 1981 C 1528.602295 1981 1967 1537.914795 1967 991.5 Z M 987.650879 32 C 1511.961914 32 1937 461.582764 1937 991.5 C 1937 1521.417236 1511.961914 1951 987.650879 1951 C 463.339844 1951 38.301762 1521.417236 38.301762 991.5 C 38.301762 461.582764 463.339844 32 987.650879 32 Z"/>
+            <path id="Path-copy" fill="none" stroke="#000000" stroke-width="154" stroke-linecap="round" stroke-linejoin="round" d="M 536.577454 607.211426 C 559.723633 564.204712 663.507874 271.603638 803.845032 373.352295 C 932.931152 466.943726 428 1551 428 1551 C 428 1551 1012.294189 364.295898 1204.746338 540.394531 C 1354.290405 677.231201 945.830872 1325.49292 945.830872 1325.49292 C 945.830872 1325.49292 1408.81958 840.793823 1530.478638 916.239502 C 1597.542236 957.828369 1438.605469 1358.901367 1438.605469 1358.901367"/>
         </svg>
     </svg>
 

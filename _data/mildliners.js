@@ -74,6 +74,14 @@ module.exports = function () {
             // set 2
             all.GOLD.name, all.APRICOT.name, all.FUCHSIA.name, all.VIOLET.name, all.SUMMER_GREEN.name,
         ],
+        mixColors: [
+            all.RED.name, all.GOLD.name, 
+            all.MAGENTA.name, all.APRICOT.name, 
+            all.CORAL_PINK.name, all.LEMON_YELLOW.name, 
+            all.LAVENDER.name, all.SUMMER_GREEN.name, 
+            all.FUCHSIA.name, 
+            all.PINK.name,
+        ],
         set: {
             Fluorescent: [
                 all.PINK, all.ORANGE, all.YELLOW, all.BLUE, all.BLUE_GREEN,
@@ -126,5 +134,13 @@ module.exports = function () {
                 all.COOL_GRAY, all.GRAY, all.DARK_GRAY,
             ],
         },
+        mix: [
+            [all.RED, all.GOLD],
+            [all.MAGENTA, all.APRICOT],
+            [all.CORAL_PINK, all.LEMON_YELLOW],
+            [all.LAVENDER, all.SUMMER_GREEN],
+            [all.LAVENDER, all.FUCHSIA],
+            [all.FUCHSIA, all.PINK],
+        ],
     }
 }

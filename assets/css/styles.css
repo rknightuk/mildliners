@@ -161,12 +161,21 @@ label:hover {
 #radio-set:checked ~ #by-set {
     display: block;
 }
+
 #radio-color:checked ~ #by-color {
     display: block;
 }
 
+#radio-mix:checked ~ #by-mix {
+    display: block;
+}
+
 #radio-set:checked ~ #by-color,
-#radio-color:checked ~ #by-set {
+#radio-set:checked ~ #by-mix,
+#radio-color:checked ~ #by-set,
+#radio-color:checked ~ #by-mix,
+#radio-mix:checked ~ #by-color,
+#radio-mix:checked ~ #by-set {
     display: none;
 }
 

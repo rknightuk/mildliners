@@ -69,6 +69,8 @@
         <label for="radio-set">By set</label>
         <input type="radio" id="radio-color" name="sorting" value="radio-color">
         <label for="radio-color">By color</label>
+        <input type="radio" id="radio-fine" name="sorting" value="radio-fine">
+        <label for="radio-fine">Fine</label>
         <input type="radio" id="radio-mix" name="sorting" value="radio-mix">
         <label for="radio-mix">Mix</label>
 
@@ -106,7 +108,6 @@
 
         <div id="by-set">
             {% set setKeys = mildliners.set | objectKeys %}
-            {% set currentSet = setKeys[0] %}
 
             {% for set in setKeys %}
                 <div class="mildliner-set">
@@ -134,9 +135,7 @@
             {% endfor %}
         </div>
 
-        <hr>
-
-        <div id="by-mix">
+        <div id="by-mix" style="margin-top: 2em;">
             {% for mix in mildliners.mix %}
                 <div class="mildliner-set">
                     <div class="mildliner">
@@ -161,6 +160,35 @@
                             <p class="mildliner-color" data-color="#{{ mix[1].color }}">#{{ mix[1].color }}</p>
                         </div>
                     </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div id="by-fine">
+            {% set fineKeys = mildliners.fine | objectKeys %}
+
+            {% for set in fineKeys %}
+                <div class="mildliner-set">
+                    <h1 class="marker">{{ set }}{% if set in mildliners.brushSets %}<svg class="icon" style=""><use xlink:href="#brush"></use></svg>{% endif %}</h1>
+                    <p class="color-peek">
+                        <a href="https://colorpeek.com#{% for h in mildliners.fine[set] %}{{ comma() }}{{ h.color }}{% endfor %}" target="_blank">
+                        <svg class="icon" style="">
+                            <use xlink:href="#colorpeek"></use>
+                        </svg> view on colorpeek</a>
+                    </p>
+                    {% for ml in mildliners.fine[set] %}
+                        <div class="mildliner">
+                            <div class="mildliner-bg">
+                                <svg class="icon" style="width: 100%;height:100%;color: #{{ ml.color }}">
+                                    <use xlink:href="#stroke"></use>
+                                </svg>
+                            </div>
+                            <div class="mildliner-info">
+                                <h2>{{ ml.name }}{% if ml.name in mildliners.fineColors %}<svg class="icon" style=""><use xlink:href="#fine"></use></svg>{% endif %} {% if ml.name in mildliners.mixColors %}<svg class="icon" style="margin-left: 0;"><use xlink:href="#mix"></use></svg>{% endif %}</h2>
+                                <p class="mildliner-color" data-color="#{{ ml.color }}">#{{ ml.color }} {% if ml.note %}{{ ml.note }}{% endif %}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
             {% endfor %}
         </div>

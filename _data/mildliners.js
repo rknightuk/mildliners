@@ -69,9 +69,7 @@ module.exports = function () {
             'Fluorescent', 'Cool and Refined', 'Warm', 'Refresh Bright', 'Friendly',
         ],
         fineColors: [
-            // set 1
             all.GRAY.name, all.BROWN.name, all.DARK_BLUE.name, all.RED.name, all.DARK_GRAY.name,
-            // set 2
             all.GOLD.name, all.APRICOT.name, all.FUCHSIA.name, all.VIOLET.name, all.SUMMER_GREEN.name,
         ],
         mixColors: [
@@ -142,5 +140,13 @@ module.exports = function () {
             [all.LAVENDER, all.FUCHSIA],
             [all.FUCHSIA, all.PINK],
         ],
+        fine: {
+            A: [
+                all.GRAY, all.BROWN, all.DARK_BLUE, all.RED, all.DARK_GRAY,    
+            ],
+            B: [
+                all.GOLD, all.APRICOT, all.FUCHSIA, all.VIOLET, all.SUMMER_GREEN,
+            ],
+        },
     }
 }

@@ -172,10 +172,19 @@ label:hover {
 
 #radio-set:checked ~ #by-color,
 #radio-set:checked ~ #by-mix,
+#radio-set:checked ~ #by-fine,
+
 #radio-color:checked ~ #by-set,
 #radio-color:checked ~ #by-mix,
+#radio-color:checked ~ #by-fine,
+
 #radio-mix:checked ~ #by-color,
-#radio-mix:checked ~ #by-set {
+#radio-mix:checked ~ #by-set,
+#radio-mix:checked ~ #by-fine,
+
+#radio-fine:checked ~ #by-color,
+#radio-fine:checked ~ #by-set,
+#radio-fine:checked ~ #by-mix {
     display: none;
 }
 

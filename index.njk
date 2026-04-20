@@ -135,7 +135,47 @@
             {% endfor %}
         </div>
 
-        <div id="by-mix" style="margin-top: 2em;">
+        <div id="by-mix">
+            {% set setKeys = mildliners.mix | objectKeys %}
+
+            {% for set in setKeys %}
+                <div class="mildliner-set">
+                    <h1 class="marker">{{ set }}</h1>
+                    <p class="color-peek">
+                        <a href="https://colorpeek.com#{% for h in mildliners.mix[set] %}{{ comma() }}{{ h[0].color }},{{ h[1].color }}{% endfor %}" target="_blank">
+                        <svg class="icon" style="">
+                            <use xlink:href="#colorpeek"></use>
+                        </svg> view on colorpeek</a>
+                    </p>
+                    {% for mix in mildliners.mix[set] %}
+                        <div class="mildliner">
+                            <div class="mildliner-bg">
+                                <svg class="icon" style="width: 100%;height:100%;color: #{{ mix[0].color }}">
+                                    <use xlink:href="#stroke"></use>
+                                </svg>
+                            </div>
+                            <div class="mildliner-info">
+                                <h2>{{ mix[0].name }}</h2>
+                                <p class="mildliner-color" data-color="#{{ mix[0].color }}">#{{ mix[0].color }}</p>
+                            </div>
+                        </div>
+                        <div class="mildliner" style="margin-top: -12px;">
+                            <div class="mildliner-bg">
+                                <svg class="icon" style="width: 100%;height:100%;color: #{{ mix[1].color }}">
+                                    <use xlink:href="#stroke"></use>
+                                </svg>
+                            </div>
+                            <div class="mildliner-info">
+                                <h2>{{ mix[1].name }}</h2>
+                                <p class="mildliner-color" data-color="#{{ mix[1].color }}">#{{ mix[1].color }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+
+        {# <div id="by-mix" style="margin-top: 2em;">
             {% for mix in mildliners.mix %}
                 <div class="mildliner-set">
                     <div class="mildliner">
@@ -162,7 +202,7 @@
                     </div>
                 </div>
             {% endfor %}
-        </div>
+        </div> #}
 
         <div id="by-fine">
             {% set fineKeys = mildliners.fine | objectKeys %}

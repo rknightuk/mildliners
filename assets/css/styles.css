@@ -130,6 +130,11 @@ label:hover {
     height: 60px;
 }
 
+#by-set .mildliner,
+#by-color .mildliner {
+    height: 90px;
+}
+
 .mildliner:hover {
     cursor: pointer;
     opacity: 0.9;
@@ -156,6 +161,22 @@ label:hover {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+
+.mildliner-metadata {
+    font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+    font-weight: normal;
+    font-size: 0.8em;
+    padding-top: 5px;
+    display: flex;
+    align-items: center;
+    grid-gap: 5px;
+}
+
+.mildliner-metadata svg {
+    width: 20px;
+    height: 20px;
+    margin-left: 0.3em;
 }
 
 #radio-set:checked ~ #by-set {

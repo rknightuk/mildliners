@@ -79,6 +79,12 @@ module.exports = function () {
             all.LAVENDER.name, all.SUMMER_GREEN.name, 
             all.FUCHSIA.name, 
             all.PINK.name,
+            all.MARIGOLD.name,
+            all.CYAN.name,
+            all.CITRUS_GREEN.name,
+            all.VIOLET.name,
+            all.BLUE.name,
+            all.SHERBET_YELLOW.name,
         ],
         set: {
             Fluorescent: [
@@ -142,6 +148,13 @@ module.exports = function () {
                 [all.LAVENDER, all.SUMMER_GREEN],
                 [all.LAVENDER, all.FUCHSIA],
                 [all.FUCHSIA, all.PINK],
+            ],
+            Other: [
+                [all.SUMMER_GREEN, all.BLUE],
+                [all.CYAN, all.SHERBET_YELLOW],
+                [all.VIOLET, all.BLUE],
+                [all.MARIGOLD, all.CITRUS_GREEN],
+                [all.CYAN, all.BLUE],
             ],
         },
         fine: {

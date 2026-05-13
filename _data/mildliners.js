@@ -212,8 +212,8 @@ const types = [
     'Mildliner',
     'Brush',
     'Fine',
-    'Dot',
     'Mix',
+    'Dot',
     'Stamp',
     'Fragrance',
     'Colour',
@@ -241,13 +241,6 @@ module.exports = function () {
         colourData,
         cssSteps: steps.join('\n'),
         all: Object.values(all),
-        brushSets: [
-            'Fluorescent', 'Cool and Refined', 'Warm', 'Refresh Bright', 'Friendly',
-        ],
-        fineColors: [
-            all.GRAY.name, all.BROWN.name, all.DARK_BLUE.name, all.RED.name, all.DARK_GRAY.name,
-            all.GOLD.name, all.APRICOT.name, all.FUCHSIA.name, all.VIOLET.name, all.SUMMER_GREEN.name,
-        ],
         mixColors: [
             all.RED.name, all.GOLD.name, 
             all.MAGENTA.name, all.APRICOT.name, 
@@ -262,58 +255,6 @@ module.exports = function () {
             all.BLUE.name,
             all.SHERBET_YELLOW.name,
         ],
-        set: {
-            Fluorescent: [
-                all.PINK, all.ORANGE, all.YELLOW, all.BLUE, all.BLUE_GREEN,
-            ],
-            'Cool and Refined': [
-                all.GREEN, all.DARK_BLUE, all.GRAY, all.VIOLET, all.RED,
-            ],
-            Warm: [
-                all.SMOKE_BLUE, all.VERMILLION, all.GOLD, all.MAGENTA, all.BROWN,
-            ],
-            'Refresh Bright': [
-                all.FUCHSIA, all.MARIGOLD, all.CITRUS_GREEN, all.SUMMER_GREEN, all.LAVENDER,
-            ],
-            Friendly: [
-                all.LEMON_YELLOW, all.APRICOT, all.CORAL_PINK, all.CYAN, all.DARK_GRAY,
-            ],
-            'Neutral (US) / Natural (JP)': [
-                all.COPPER, all.BEIGE, all.CREAM, all.COOL_GRAY, all.OLIVE, all.DUSTY_PINK,
-            ],
-            Gentle: [
-                all.HONEY_ORANGE, all.SHERBET_YELLOW, all.SODA_BLUE, all.LILAC, all.BABY_PINK,
-            ],
-            Calm: [
-                all.IRIS, all.SMOKE_RED, all.MIMOSA_YELLOW, all.MINT, all.MOSS_GREEN,
-            ]
-        },
-        color: {
-            Reds: [
-               all. RED, all.MARIGOLD, all.SMOKE_RED, all.CORAL_PINK, all.PINK, all.BABY_PINK, all.DUSTY_PINK,
-            ],
-            Oranges: [
-                all.VERMILLION, all.APRICOT, all.ORANGE, all.HONEY_ORANGE,
-            ],
-            Yellows: [
-                all.GOLD, all.LEMON_YELLOW, all.SHERBET_YELLOW, all.MIMOSA_YELLOW, all.YELLOW,
-            ],
-            Greens: [
-                all.CITRUS_GREEN, all.GREEN, all.OLIVE, all.BLUE_GREEN, all.SUMMER_GREEN, all.MOSS_GREEN, all.MINT,
-            ],
-            Blues: [
-                all.CYAN, all.SMOKE_BLUE, all.DARK_BLUE, all.BLUE, all.SODA_BLUE,
-            ],
-            Purples: [
-                all.FUCHSIA, all.LAVENDER, all.VIOLET, all.MAGENTA, all.LILAC, all.IRIS,
-            ],
-            Browns: [
-                all.BEIGE, all.COPPER, all.BROWN, all.CREAM,
-            ],
-            Grays: [
-                all.COOL_GRAY, all.GRAY, all.DARK_GRAY,
-            ],
-        },
         mix: {
             Warm: [
                 [all.RED, all.GOLD],
@@ -331,14 +272,6 @@ module.exports = function () {
                 [all.VIOLET, all.BLUE],
                 [all.MARIGOLD, all.CITRUS_GREEN],
                 [all.CYAN, all.BLUE],
-            ],
-        },
-        fine: {
-            A: [
-                all.GRAY, all.BROWN, all.DARK_BLUE, all.RED, all.DARK_GRAY,    
-            ],
-            B: [
-                all.GOLD, all.APRICOT, all.FUCHSIA, all.VIOLET, all.SUMMER_GREEN,
             ],
         },
     }

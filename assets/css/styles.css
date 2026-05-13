@@ -25,6 +25,11 @@ header p {
     margin: 0.2em;
 }
 
+header h1 {
+    font-size: 2.5em;
+    text-shadow: -2px 2px 0 #ffb6d9;
+}
+
 a {
     color: #fa5dcd;
 }
@@ -48,11 +53,11 @@ a {
 }
 
 .mildliner-svg svg {
-    height: 40px;
+    height: 35px;
     text-align: center;
     display: flex;
     margin: 1em auto;
-    max-width: 100%;
+    width: 100%;
 }
 
 hr {
@@ -166,6 +171,10 @@ h2.with-icon {
     padding: 15px 10px;
     text-align: center;
     height: 60px;
+}
+
+#by-mix .mildliner {
+    height: 50px;
 }
 
 .mildliner:hover {

@@ -69,15 +69,47 @@ hr {
     font-size: 1.2em;
 }
 
+input[type="radio"] {
+    display: none;
+}
+
 label {
-    margin-right: 1em;
-    text-transform: uppercase;
+    line-height: 2em;
     font-family: 'Boochild', sans-serif;
     letter-spacing: 0.2em;
+    text-transform: lowercase;
 }
 
 label:hover {
     cursor: pointer;
+}
+
+label svg {
+    max-height: 25px;
+}
+
+.label-wrap {
+    display: inline;
+    position: relative;
+    padding: 10px;
+}
+
+.menu-bg {
+    display: none;
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    left: 20px;
+    bottom: 10px;
+    opacity: 0.2;
+}
+
+label:hover .menu-bg {
+    display: block;
+}
+
+input[type="radio"]:checked + label .menu-bg {
+    display: block;
 }
 
 .mildliner-singles {
@@ -98,7 +130,7 @@ label:hover {
 }
 
 .mildliner h2 {
-    margin-bottom: 0.3em;
+    margin-bottom: 0.1em;
 }
 
 .mildliner h2,
@@ -115,6 +147,12 @@ label:hover {
     margin-left: 0.3em;
 }
 
+h2.with-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .mildliner-set {
     margin-bottom: 1em;
 }
@@ -128,11 +166,6 @@ label:hover {
     padding: 15px 10px;
     text-align: center;
     height: 60px;
-}
-
-#by-set .mildliner,
-#by-color .mildliner {
-    height: 90px;
 }
 
 .mildliner:hover {
@@ -179,38 +212,45 @@ label:hover {
     margin-left: 0.3em;
 }
 
-#radio-set:checked ~ #by-set {
-    display: block;
-}
+#radio-mildliner:checked ~ #by-color,
+#radio-mildliner:checked ~ #by-mix,
+#radio-mildliner:checked ~ #by-fine,
 
-#radio-color:checked ~ #by-color {
-    display: block;
-}
-
-#radio-mix:checked ~ #by-mix {
-    display: block;
-}
-
-#radio-set:checked ~ #by-color,
-#radio-set:checked ~ #by-mix,
-#radio-set:checked ~ #by-fine,
-
-#radio-color:checked ~ #by-set,
+#radio-color:checked ~ #by-mildliner,
 #radio-color:checked ~ #by-mix,
 #radio-color:checked ~ #by-fine,
 
 #radio-mix:checked ~ #by-color,
-#radio-mix:checked ~ #by-set,
+#radio-mix:checked ~ #by-mildliner,
 #radio-mix:checked ~ #by-fine,
 
 #radio-fine:checked ~ #by-color,
-#radio-fine:checked ~ #by-set,
+#radio-fine:checked ~ #by-mildliner,
 #radio-fine:checked ~ #by-mix {
     display: none;
 }
 
+.key {
+    margin: 0;
+    font-weight: bold;
+}
+
 .key svg {
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     vertical-align: middle;
+}
+
+.available-in {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 5px;
+    margin-top: 10px;
+    padding-bottom: 5px;
+}
+
+.available-in svg {
+    width: 22px;
+    height: 22px;
 }

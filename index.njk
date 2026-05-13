@@ -4,10 +4,10 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <title>Mildliner Color Reference</title>
-    <meta property="og:title" content="Mildliner Color Reference">
-    <meta name="description" content="A guide to all the Mildliner colors and sets">
-    <meta property="og:description" content="A guide to all the Mildliner colors and sets">
+    <title>Mildliner Colour Reference</title>
+    <meta property="og:title" content="Mildliner Colour Reference">
+    <meta name="description" content="A guide to all the Mildliner colours, types, and sets">
+    <meta property="og:description" content="A guide to all the Mildliner colours, types, and sets">
     <meta property="og:url" content="https://mildliners.rknight.me">
 
 
@@ -28,7 +28,7 @@
   <body>
     <header>
         <h1 class="marker">Mildliner Reference</h1>
-        <p>A guide to all the <a href="https://www.zebrapen.com/pages/discover-mildliner">Mildliner</a> colours and sets.</p>
+        <p>A guide to all the <a href="https://www.zebrapen.com/pages/discover-mildliner-new">Mildliner</a> colours, types, and sets.</p>
         <p><strong>There are currently {{ mildliners.all | length }} Mildliner colours across {{ mildliners.types | length - 1 }} pen styles available.</strong></p>
         <p>A <a href="https://rknight.me">Robb Knight</a> curio &bull; <a href="https://clickart.rknight.me">Clickart Reference</a> • <a href="https://rknight.me/blog/how-many-mildliner-colours-are-there-now/">Read the blog post</a></p>
     </header>
@@ -165,119 +165,132 @@
                 </style>
             {% endif %}
 
-            <div id="by-{{ type.name | lower }}">
+            <div id="by-{{ type.name | lower }}" class="type-container">
+                <h1 class="marker print-header">
+                    Mildliner {% if type.name != 'Mildliner' and type.name != 'Colour' %}{{ type.name }}{% endif %}{% if type.name == 'Colour' %}Colours{% endif %}
+                </h1>
 
-                <div class="mildliner-svg">
-                    {% if type.name == 'Colour' %}
-                        <svg class="icon" style=""><use xlink:href="#pen-mildliner"></use></svg>
+                <div class="type-container-inner">
+
+                    <div class="mildliner-svg">
+                        {% if type.name == 'Colour' %}
+                            <svg class="icon" style=""><use xlink:href="#pen-mildliner"></use></svg>
+                        {% else %}
+                            <svg class="icon" style=""><use xlink:href="#pen-{{ type.name | lower }}"></use></svg>
+                        {% endif %}
+                    </div>
+                    
+                    {% if type.name != 'Colour' %}
+                        <p style="margin: 0;" class="type-info"><strong>{{ type.name }} has {{ type.sets | length }} set{% if type.sets | length > 1 %}s{% endif %} and {{ type.colours | length }} colours</strong></p>
                     {% else %}
-                        <svg class="icon" style=""><use xlink:href="#pen-{{ type.name | lower }}"></use></svg>
-                    {% endif %}
-                </div>
-                
-                {% if type.name != 'Colour' %}
-                    <p style="margin: 0;"><strong>{{ type.name }} has {{ type.sets | length }} set{% if type.sets | length > 1 %}s{% endif %} and {{ type.colours | length }} colours</strong></p>
-                {% else %}
-                    <p class="key">
-                        {% for type in mildliners.types %}
-                            {% if type != 'Colour' %}
-                                 <svg class="icon" style=""><use xlink:href="#circle-{{ type | lower }}"></use></svg> {{ type }}&nbsp;&nbsp;
-                            {% endif %}
-                        {% endfor %}
-                    </p>
-                {% endif %}
-
-                {% set setKeys = type.sets | objectKeys %}
-                {% for set in setKeys %}
-                    
-                    <h1 class="marker" style="margin-top: 0.5em;">{{ set }}</h1>
-
-                    <p class="color-peek">
-                        <a href="https://colorpeek.com#{% for h in type.sets[set] %}{{ comma() }}{{ h.color }}{% endfor %}" target="_blank">
-                            <svg class="icon" style=""><use xlink:href="#colorpeek"></use></svg> view on colorpeek
-                        </a>
-                    </p>
-                    
-                    {% for ml in type.sets[set] %}
-                        <div class="mildliner">
-                            <div class="mildliner-bg">
-                                <svg class="icon" style="width: 100%;height:100%;color: #{{ ml.color }}">
-                                    <use xlink:href="#stroke"></use>
-                                </svg>
-                            </div>
-                            <div class="mildliner-info">
-                                <h2 {% if ml.icon %} class="with-icon"{% endif %}>{{ ml.name }}{% if ml.icon %}<svg class="icon"><use xlink:href="#{{ ml.icon }}"></use></svg> {% endif %}</h2>
-                                <p class="mildliner-color" data-color="#{{ ml.color }}">#{{ ml.color }} {% if ml.note %}({{ ml.note }}){% endif %}</p>
-                                {% if ml.code and type.prefix %}<p class="mildliner-metadata">{{ type.prefix }}-{{ ml.code }}</p>{% endif %}
-                                {% if type.name == 'Colour' %}
-                                    <div class="available-in">
-                                        {% for type in mildliners.types %}
-                                            {% if type != 'Colour' %}
-                                                {% if type in mildliners.colourData[ml.name] %}
-                                                    <svg class="icon"><use xlink:href="#circle-{{ type | lower }}"></use></svg>
-                                                {% endif %}
-                                            {% endif %}
-                                        {% endfor %}
-                                        {% if ml.name in mildliners.mixColors %}
-                                            <svg class="icon"><use xlink:href="#circle-mix"></use></svg>
-                                        {% endif %}
-                                    </div>
+                        <p class="key">
+                            {% for type in mildliners.types %}
+                                {% if type != 'Colour' %}
+                                    <svg class="icon" style=""><use xlink:href="#circle-{{ type | lower }}"></use></svg> {{ type }}&nbsp;&nbsp;
                                 {% endif %}
+                            {% endfor %}
+                        </p>
+                    {% endif %}
+
+                    {% set setKeys = type.sets | objectKeys %}
+                    {% for set in setKeys %}
+
+                    <div class="set">
+                        
+                        <h1 class="marker" style="margin-top: 0.5em;">{{ set }}</h1>
+
+                        <p class="color-peek">
+                            <a href="https://colorpeek.com#{% for h in type.sets[set] %}{{ comma() }}{{ h.color }}{% endfor %}" target="_blank">
+                                <svg class="icon" style=""><use xlink:href="#colorpeek"></use></svg> view on colorpeek
+                            </a>
+                        </p>
+                        
+                        {% for ml in type.sets[set] %}
+                            <div class="mildliner">
+                                <div class="mildliner-bg">
+                                    <svg class="icon" style="width: 100%;height:100%;color: #{{ ml.color }}">
+                                        <use xlink:href="#stroke"></use>
+                                    </svg>
+                                </div>
+                                <div class="mildliner-info {% if ml.lightText %}light-text{% endif %}">
+                                    <h2 {% if ml.icon %} class="with-icon"{% endif %}>{{ ml.name }}{% if ml.icon %}<svg class="icon"><use xlink:href="#{{ ml.icon }}"></use></svg> {% endif %}</h2>
+                                    <p class="mildliner-color" data-color="#{{ ml.color }}">#{{ ml.color }} {% if ml.note %}({{ ml.note }}){% endif %}</p>
+                                    {% if ml.code and type.prefix %}<p class="mildliner-metadata">{{ type.prefix }}-{{ ml.code }}</p>{% endif %}
+                                    {% if type.name == 'Colour' %}
+                                        <div class="available-in">
+                                            {% for type in mildliners.types %}
+                                                {% if type != 'Colour' %}
+                                                    {% if type in mildliners.colourData[ml.name] %}
+                                                        <svg class="icon"><use xlink:href="#circle-{{ type | lower }}"></use></svg>
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
+                                            {% if ml.name in mildliners.mixColors %}
+                                                <svg class="icon"><use xlink:href="#circle-mix"></use></svg>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                </div>
                             </div>
+                        {% endfor %}
                         </div>
                     {% endfor %}
-                {% endfor %}
+                </div>
             </div>
         {% endfor %}
 
-         <div id="by-mix">
+         <div id="by-mix" class="type-container">
+            <h1 class="marker print-header">Mildliner Mix</h1>
+
+            <div class="type-container-inner">
             
-            <div class="mildliner-svg">
-                <svg class="icon" style=""><use xlink:href="#pen-mix"></use></svg>
-            </div>
-
-            {% set setKeys = mildliners.mix | objectKeys %}
-
-            <p style="margin: 0;"><strong>Mix has {{ mildliners.mix | length }} sets, 11 colour combinations, and 16 colours</strong></p>
-
-            {% for set in setKeys %}
-                <div class="mildliner-set">
-                    
-                    <h1 class="marker" style="margin-top: 0.5em;">{{ set }}</h1>
-
-                    <p class="color-peek">
-                        <a href="https://colorpeek.com#{% for h in mildliners.mix[set] %}{{ comma() }}{{ h[0].color }},{{ h[1].color }}{% endfor %}" target="_blank">
-                        <svg class="icon" style="">
-                            <use xlink:href="#colorpeek"></use>
-                        </svg> view on colorpeek</a>
-                    </p>
-                    
-                    {% for mix in mildliners.mix[set] %}
-                        <div class="mildliner">
-                            <div class="mildliner-bg">
-                                <svg class="icon" style="width: 100%;height:100%;color: #{{ mix[0].color }}">
-                                    <use xlink:href="#stroke"></use>
-                                </svg>
-                            </div>
-                            <div class="mildliner-info">
-                                <h2>{{ mix[0].name }}</h2>
-                                <p class="mildliner-color" data-color="#{{ mix[0].color }}">#{{ mix[0].color }}</p>
-                            </div>
-                        </div>
-                        <div class="mildliner" style="margin-top: -12px;">
-                            <div class="mildliner-bg">
-                                <svg class="icon" style="width: 100%;height:100%;color: #{{ mix[1].color }}">
-                                    <use xlink:href="#stroke"></use>
-                                </svg>
-                            </div>
-                            <div class="mildliner-info">
-                                <h2>{{ mix[1].name }}</h2>
-                                <p class="mildliner-color" data-color="#{{ mix[1].color }}">#{{ mix[1].color }}</p>
-                            </div>
-                        </div>
-                    {% endfor %}
+                <div class="mildliner-svg">
+                    <svg class="icon" style=""><use xlink:href="#pen-mix"></use></svg>
                 </div>
-            {% endfor %}
+
+                {% set setKeys = mildliners.mix | objectKeys %}
+
+                <p style="margin: 0;" class="type-info"><strong>Mix has {{ mildliners.mix | length }} sets, 11 colour combinations, and 16 colours</strong></p>
+
+                {% for set in setKeys %}
+                    <div class="mildliner-set">
+                        
+                        <h1 class="marker" style="margin-top: 0.5em;">{{ set }}</h1>
+
+                        <p class="color-peek">
+                            <a href="https://colorpeek.com#{% for h in mildliners.mix[set] %}{{ comma() }}{{ h[0].color }},{{ h[1].color }}{% endfor %}" target="_blank">
+                            <svg class="icon" style="">
+                                <use xlink:href="#colorpeek"></use>
+                            </svg> view on colorpeek</a>
+                        </p>
+                        
+                        {% for mix in mildliners.mix[set] %}
+                            <div class="mildliner">
+                                <div class="mildliner-bg">
+                                    <svg class="icon" style="width: 100%;height:100%;color: #{{ mix[0].color }}">
+                                        <use xlink:href="#stroke"></use>
+                                    </svg>
+                                </div>
+                                <div class="mildliner-info">
+                                    <h2>{{ mix[0].name }}</h2>
+                                    <p class="mildliner-color" data-color="#{{ mix[0].color }}">#{{ mix[0].color }}</p>
+                                </div>
+                            </div>
+                            <div class="mildliner" style="margin-top: -12px;">
+                                <div class="mildliner-bg">
+                                    <svg class="icon" style="width: 100%;height:100%;color: #{{ mix[1].color }}">
+                                        <use xlink:href="#stroke"></use>
+                                    </svg>
+                                </div>
+                                <div class="mildliner-info">
+                                    <h2>{{ mix[1].name }}</h2>
+                                    <p class="mildliner-color" data-color="#{{ mix[1].color }}">#{{ mix[1].color }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 
@@ -368,56 +381,46 @@
         </symbol>
         <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 384" id="circle-brush">
             <g id="circle-brush">
-                <path id="icon-brush" fill="#000000" fill-rule="evenodd" stroke="none" d="M 84.809319 286.894958 C 86.243614 295.787048 94.961525 305.025055 103.915009 306.000671 C 106.377411 306.26886 111.417725 295.577393 115.719772 286.451904 C 119.31031 278.835693 122.386589 272.310333 123.020706 274.157776 C 144.254944 336.016602 241.476501 309.152496 254.836563 267.789276 C 266.568573 231.466415 235.713486 201.391083 235.713486 201.391083 C 235.713486 201.391083 306.467651 182.536926 304.976776 132.127808 C 303.919434 96.377289 281.351166 70.90451 205.811951 74.80838 C 87.774086 80.908661 52.034019 201.142822 97.186951 205.239029 C 98.670776 205.373642 98.076157 203.7444 96.948868 200.655701 C 93.25737 190.541183 83.853874 164.776093 123.020706 134.049438 C 211.968353 64.269012 273.107086 112.153595 270.345123 134.051788 C 265.77475 170.28775 171.314423 184.998032 171.314423 184.998032 C 171.314423 184.998032 216.990387 107.28775 173.969177 114.943756 C 166.556625 116.26297 135.757797 184.998032 135.757797 184.998032 L 110.283501 184.998032 C 110.283501 184.998032 106.18811 190.370697 110.283501 204.103714 C 113.880623 216.165939 123.020706 210.472198 123.020706 210.472198 C 123.020706 210.472198 80.098129 257.693085 84.809319 286.894958 Z M 161.232071 210.562546 L 129.389252 267.80304 C 129.389252 267.80304 194.512314 300.649078 224.917709 248.72287 C 249.497162 206.746674 161.232071 210.562546 161.232071 210.562546 Z"></path>
-                <path id="Circle" fill="none" stroke="#000000" stroke-width="25" stroke-linecap="round" stroke-linejoin="round" d="M 371 192 C 371 93.141022 290.858978 13 192 13 C 93.141029 13 13 93.141022 13 192 C 13 290.858978 93.141029 371 192 371 C 290.858978 371 371 290.858978 371 192 Z"></path>
+                <path id="icon-brush" fill="currentColor" fill-rule="evenodd" stroke="none" d="M 84.809319 286.894958 C 86.243614 295.787048 94.961525 305.025055 103.915009 306.000671 C 106.377411 306.26886 111.417725 295.577393 115.719772 286.451904 C 119.31031 278.835693 122.386589 272.310333 123.020706 274.157776 C 144.254944 336.016602 241.476501 309.152496 254.836563 267.789276 C 266.568573 231.466415 235.713486 201.391083 235.713486 201.391083 C 235.713486 201.391083 306.467651 182.536926 304.976776 132.127808 C 303.919434 96.377289 281.351166 70.90451 205.811951 74.80838 C 87.774086 80.908661 52.034019 201.142822 97.186951 205.239029 C 98.670776 205.373642 98.076157 203.7444 96.948868 200.655701 C 93.25737 190.541183 83.853874 164.776093 123.020706 134.049438 C 211.968353 64.269012 273.107086 112.153595 270.345123 134.051788 C 265.77475 170.28775 171.314423 184.998032 171.314423 184.998032 C 171.314423 184.998032 216.990387 107.28775 173.969177 114.943756 C 166.556625 116.26297 135.757797 184.998032 135.757797 184.998032 L 110.283501 184.998032 C 110.283501 184.998032 106.18811 190.370697 110.283501 204.103714 C 113.880623 216.165939 123.020706 210.472198 123.020706 210.472198 C 123.020706 210.472198 80.098129 257.693085 84.809319 286.894958 Z M 161.232071 210.562546 L 129.389252 267.80304 C 129.389252 267.80304 194.512314 300.649078 224.917709 248.72287 C 249.497162 206.746674 161.232071 210.562546 161.232071 210.562546 Z"></path>
+                <path id="Circle" fill="none" stroke="currentColor" stroke-width="25" stroke-linecap="round" stroke-linejoin="round" d="M 371 192 C 371 93.141022 290.858978 13 192 13 C 93.141029 13 13 93.141022 13 192 C 13 290.858978 93.141029 371 192 371 C 290.858978 371 371 290.858978 371 192 Z"></path>
             </g>
         </symbol>
         <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 384" id="circle-dot">
             <g id="circle-dot">
-                <path fill="none" stroke="#000000" stroke-width="25" stroke-linecap="round" stroke-linejoin="round" d="M 371 192 C 371 93.141022 290.858978 13 192 13 C 93.141029 13 13 93.141022 13 192 C 13 290.858978 93.141029 371 192 371 C 290.858978 371 371 290.858978 371 192 Z"></path>
-                <path fill="#000000" fill-rule="evenodd" stroke="none" d="M 298 192 C 298 133.457809 250.542191 86 192 86 C 133.457825 86 86 133.457809 86 192 C 86 250.542175 133.457825 298 192 298 C 250.542191 298 298 250.542175 298 192 Z"></path>
+                <path fill="none" stroke="currentColor" stroke-width="25" stroke-linecap="round" stroke-linejoin="round" d="M 371 192 C 371 93.141022 290.858978 13 192 13 C 93.141029 13 13 93.141022 13 192 C 13 290.858978 93.141029 371 192 371 C 290.858978 371 371 290.858978 371 192 Z"></path>
+                <path fill="currentColor" fill-rule="evenodd" stroke="none" d="M 298 192 C 298 133.457809 250.542191 86 192 86 C 133.457825 86 86 133.457809 86 192 C 86 250.542175 133.457825 298 192 298 C 250.542191 298 298 250.542175 298 192 Z"></path>
             </g>
         </symbol>
         <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 384" id="circle-fine">
             <g id="circle-fine">
-                <path id="icon-fine" fill="#000000" fill-rule="evenodd" stroke="none" d="M 107 87.454559 L 297 87.454559 L 297 122 L 176.090912 122 L 176.090912 173.818176 L 297 173.818176 L 297 208.363632 L 176.090912 208.363632 L 176.090912 312 L 107 312 L 107 87.454559 Z"></path>
-                <path fill="none" stroke="#000000" stroke-width="25" stroke-linecap="round" stroke-linejoin="round" d="M 371 192 C 371 93.141022 290.858978 13 192 13 C 93.141029 13 13 93.141022 13 192 C 13 290.858978 93.141029 371 192 371 C 290.858978 371 371 290.858978 371 192 Z"></path>
+                <path id="icon-fine" fill="currentColor" fill-rule="evenodd" stroke="none" d="M 107 87.454559 L 297 87.454559 L 297 122 L 176.090912 122 L 176.090912 173.818176 L 297 173.818176 L 297 208.363632 L 176.090912 208.363632 L 176.090912 312 L 107 312 L 107 87.454559 Z"></path>
+                <path fill="none" stroke="currentColor" stroke-width="25" stroke-linecap="round" stroke-linejoin="round" d="M 371 192 C 371 93.141022 290.858978 13 192 13 C 93.141029 13 13 93.141022 13 192 C 13 290.858978 93.141029 371 192 371 C 290.858978 371 371 290.858978 371 192 Z"></path>
             </g>
         </symbol>
         <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 384" id="circle-fragrance">
             <g id="circle-fine">
-                <path id="icon-fragrance" fill="#000000" fill-rule="evenodd" stroke="none" d="M 85.443703 296.478149 C 93.310745 295.822571 98.719254 294.4021 101.669395 292.216858 C 106.258492 288.938965 110.028069 282.110046 112.97821 271.729889 L 154.116074 123.240234 C 155.099442 119.634521 155.864288 116.520508 156.410614 113.898163 C 157.50325 109.199768 158.049576 105.648804 158.049576 103.244934 C 158.049576 97.453857 156.08284 93.575073 152.149323 91.608337 C 148.21579 89.641602 141.49614 88.548889 131.990128 88.330414 L 131.990128 82.921844 L 299 82.921844 L 288.510681 134.057358 L 281.627045 133.401779 C 281.954834 129.796066 282.118744 127.064423 282.118744 125.207001 C 282.227997 122.584656 282.282623 120.563324 282.282623 119.142853 C 282.282623 108.981293 278.349152 102.20697 270.482117 98.819763 C 262.615082 95.432526 246.225647 93.738983 221.31337 93.738983 C 210.714706 93.738983 203.667252 94.230682 200.170807 95.21405 C 196.674332 96.197418 194.379807 98.655853 193.28717 102.589355 L 171.16124 180.767685 C 199.897781 179.893616 217.297882 178.145355 223.362061 175.52301 C 229.426254 172.900681 236.282486 164.268921 243.931 149.627472 L 249.667358 151.266434 L 224.427383 229.772537 L 218.69104 228.133591 C 219.892944 221.68692 220.657776 217.371048 220.98558 215.185806 C 221.31337 213.00058 221.477264 210.924515 221.477264 208.957764 C 221.477264 201.30925 218.254013 196.39238 211.807404 194.207138 C 207.764618 192.786667 199.569901 192.076492 187.223038 192.076492 L 168.047211 192.076492 L 147.560226 266.649109 C 145.921265 272.440186 144.96521 275.963806 144.692062 277.220398 C 144.4189 278.47699 144.282318 279.979248 144.282318 281.727539 C 144.282318 287.627777 146.740723 291.615875 151.657623 293.691925 C 154.826294 295.003082 160.945023 295.931885 170.013962 296.478149 L 170.013962 301.886719 L 85.443703 301.886719 Z"></path>
-                <path fill="none" stroke="#000000" stroke-width="25" stroke-linecap="round" stroke-linejoin="round" d="M 371 192 C 371 93.141022 290.858978 13 192 13 C 93.141029 13 13 93.141022 13 192 C 13 290.858978 93.141029 371 192 371 C 290.858978 371 371 290.858978 371 192 Z"></path>
+                <path id="icon-fragrance" fill="currentColor" fill-rule="evenodd" stroke="none" d="M 85.443703 296.478149 C 93.310745 295.822571 98.719254 294.4021 101.669395 292.216858 C 106.258492 288.938965 110.028069 282.110046 112.97821 271.729889 L 154.116074 123.240234 C 155.099442 119.634521 155.864288 116.520508 156.410614 113.898163 C 157.50325 109.199768 158.049576 105.648804 158.049576 103.244934 C 158.049576 97.453857 156.08284 93.575073 152.149323 91.608337 C 148.21579 89.641602 141.49614 88.548889 131.990128 88.330414 L 131.990128 82.921844 L 299 82.921844 L 288.510681 134.057358 L 281.627045 133.401779 C 281.954834 129.796066 282.118744 127.064423 282.118744 125.207001 C 282.227997 122.584656 282.282623 120.563324 282.282623 119.142853 C 282.282623 108.981293 278.349152 102.20697 270.482117 98.819763 C 262.615082 95.432526 246.225647 93.738983 221.31337 93.738983 C 210.714706 93.738983 203.667252 94.230682 200.170807 95.21405 C 196.674332 96.197418 194.379807 98.655853 193.28717 102.589355 L 171.16124 180.767685 C 199.897781 179.893616 217.297882 178.145355 223.362061 175.52301 C 229.426254 172.900681 236.282486 164.268921 243.931 149.627472 L 249.667358 151.266434 L 224.427383 229.772537 L 218.69104 228.133591 C 219.892944 221.68692 220.657776 217.371048 220.98558 215.185806 C 221.31337 213.00058 221.477264 210.924515 221.477264 208.957764 C 221.477264 201.30925 218.254013 196.39238 211.807404 194.207138 C 207.764618 192.786667 199.569901 192.076492 187.223038 192.076492 L 168.047211 192.076492 L 147.560226 266.649109 C 145.921265 272.440186 144.96521 275.963806 144.692062 277.220398 C 144.4189 278.47699 144.282318 279.979248 144.282318 281.727539 C 144.282318 287.627777 146.740723 291.615875 151.657623 293.691925 C 154.826294 295.003082 160.945023 295.931885 170.013962 296.478149 L 170.013962 301.886719 L 85.443703 301.886719 Z"></path>
+                <path fill="none" stroke="currentColor" stroke-width="25" stroke-linecap="round" stroke-linejoin="round" d="M 371 192 C 371 93.141022 290.858978 13 192 13 C 93.141029 13 13 93.141022 13 192 C 13 290.858978 93.141029 371 192 371 C 290.858978 371 371 290.858978 371 192 Z"></path>
             </g>
         </symbol>
         <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 384" id="circle-mildliner">
             <g id="circle-mildliner">
-                <path id="icon-mildliner" fill="#000000" fill-rule="evenodd" stroke="none" d="M 81.63282 275.327118 L 81.63282 108.530243 L 153.117188 108.530243 L 212.6875 239.58493 L 272.257813 108.530243 L 308 108.530243 L 308 275.327118 L 272.257813 275.327118 L 272.257813 156.186493 L 224.601563 275.327118 L 200.773438 275.327118 L 141.203125 144.27243 L 141.203125 275.327118 L 81.63282 275.327118 Z"></path>
-                <path fill="none" stroke="#000000" stroke-width="25" stroke-linecap="round" stroke-linejoin="round" d="M 371 192 C 371 93.141022 290.858978 13 192 13 C 93.141029 13 13 93.141022 13 192 C 13 290.858978 93.141029 371 192 371 C 290.858978 371 371 290.858978 371 192 Z"></path>
+                <path id="icon-mildliner" fill="currentColor" fill-rule="evenodd" stroke="none" d="M 81.63282 275.327118 L 81.63282 108.530243 L 153.117188 108.530243 L 212.6875 239.58493 L 272.257813 108.530243 L 308 108.530243 L 308 275.327118 L 272.257813 275.327118 L 272.257813 156.186493 L 224.601563 275.327118 L 200.773438 275.327118 L 141.203125 144.27243 L 141.203125 275.327118 L 81.63282 275.327118 Z"></path>
+                <path fill="none" stroke="currentColor" stroke-width="25" stroke-linecap="round" stroke-linejoin="round" d="M 371 192 C 371 93.141022 290.858978 13 192 13 C 93.141029 13 13 93.141022 13 192 C 13 290.858978 93.141029 371 192 371 C 290.858978 371 371 290.858978 371 192 Z"></path>
             </g>
         </symbol>
         <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 384" id="circle-mix">
             <g id="circle-mix">
-                <path id="icon-mix" fill="none" stroke="#000000" stroke-width="25" stroke-linecap="round" stroke-linejoin="round" d="M 120.154533 119.579102 C 124.366013 111.753967 143.24971 58.514771 168.784271 77.028107 C 192.271683 94.05719 100.398697 291.302887 100.398697 291.302887 C 100.398697 291.302887 206.711914 75.38028 241.728867 107.421692 C 268.938629 132.319321 194.618805 250.271515 194.618805 250.271515 C 194.618805 250.271515 278.860321 162.079788 300.996368 175.807236 C 313.198669 183.374405 284.279907 256.35025 284.279907 256.35025"></path>
-                <path id="Circle-copy" fill="none" stroke="#000000" stroke-width="25" stroke-linecap="round" stroke-linejoin="round" d="M 371 192 C 371 93.141022 290.858978 13 192 13 C 93.141029 13 13 93.141022 13 192 C 13 290.858978 93.141029 371 192 371 C 290.858978 371 371 290.858978 371 192 Z"></path>
+                <path id="icon-mix" fill="none" stroke="currentColor" stroke-width="25" stroke-linecap="round" stroke-linejoin="round" d="M 120.154533 119.579102 C 124.366013 111.753967 143.24971 58.514771 168.784271 77.028107 C 192.271683 94.05719 100.398697 291.302887 100.398697 291.302887 C 100.398697 291.302887 206.711914 75.38028 241.728867 107.421692 C 268.938629 132.319321 194.618805 250.271515 194.618805 250.271515 C 194.618805 250.271515 278.860321 162.079788 300.996368 175.807236 C 313.198669 183.374405 284.279907 256.35025 284.279907 256.35025"></path>
+                <path id="Circle-copy" fill="none" stroke="currentColor" stroke-width="25" stroke-linecap="round" stroke-linejoin="round" d="M 371 192 C 371 93.141022 290.858978 13 192 13 C 93.141029 13 13 93.141022 13 192 C 13 290.858978 93.141029 371 192 371 C 290.858978 371 371 290.858978 371 192 Z"></path>
             </g>
         </symbol>
         <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 384" id="circle-stamp">
             <g id="circle-stamp">
-                <path fill="none" stroke="#000000" stroke-width="25" stroke-linecap="round" stroke-linejoin="round" d="M 371 192 C 371 93.141022 290.858978 13 192 13 C 93.141029 13 13 93.141022 13 192 C 13 290.858978 93.141029 371 192 371 C 290.858978 371 371 290.858978 371 192 Z"></path>
-                <path id="path3" fill="#000000" fill-rule="evenodd" stroke="none" d="M 274.488251 309.817963 L 193.719208 252.519028 L 113.71431 311.228424 L 143.19693 219.450912 L 62.715378 156.198898 L 153.665314 158.078674 L 191.977753 59 L 231.708221 156.100296 L 322.831512 153.929398 L 243.429764 218.33194 Z"></path>
+                <path fill="none" stroke="currentColor" stroke-width="25" stroke-linecap="round" stroke-linejoin="round" d="M 371 192 C 371 93.141022 290.858978 13 192 13 C 93.141029 13 13 93.141022 13 192 C 13 290.858978 93.141029 371 192 371 C 290.858978 371 371 290.858978 371 192 Z"></path>
+                <path id="path3" fill="currentColor" fill-rule="evenodd" stroke="none" d="M 274.488251 309.817963 L 193.719208 252.519028 L 113.71431 311.228424 L 143.19693 219.450912 L 62.715378 156.198898 L 153.665314 158.078674 L 191.977753 59 L 231.708221 156.100296 L 322.831512 153.929398 L 243.429764 218.33194 Z"></path>
             </g>
         </symbol>
-        {# <symbol viewBox="0 0 1281 127" id="pen-mildliner">
-            <g>
-            <path id="body" fill="#ffffff" fill-rule="evenodd" stroke="#c8c8c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M 379.996155 28 L 1210 28 L 1210 35 L 1279 35 L 1279 112 L 1210 112 L 1210 122 L 76.812737 122 C 76.493095 113.675507 76.129379 94.400017 79 84 C 81.729874 74.109894 83.820953 69.178787 89 63 C 91.441681 60.08699 94.091202 57.269684 97.396851 55.48674 C 99.09758 54.569427 100.731613 54.206726 103 54 C 107.97937 53.546234 280 50 361 50 C 371.957642 50 379.427887 44.077797 379.996155 28 Z"></path>
-            <path id="sample" fill="currentColor" fill-rule="evenodd" stroke="#c2c2c2" stroke-linecap="round" stroke-linejoin="round" d="M 501 61.242447 C 496.875122 56.824615 490.568146 54 483.5 54 C 471.073608 54 461 62.730446 461 73.5 C 461 84.269554 471.073608 93 483.5 93 C 490.568146 93 496.875122 90.175385 501 85.757553 C 505.124878 90.175385 511.431854 93 518.5 93 C 530.926392 93 541 84.269554 541 73.5 C 541 62.730446 530.926392 54 518.5 54 C 511.431854 54 505.124878 56.824615 501 61.242447 Z"></path>
-            <path id="cap-color" fill="currentColor" fill-rule="evenodd" stroke="#c8c8c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M 77 126 C 77 126 75.270782 97.510635 79 84 C 81.729874 74.109894 83.820953 69.178787 89 63 C 91.441681 60.08699 94.091202 57.269684 97.396851 55.48674 C 99.09758 54.569427 100.731613 54.206726 103 54 C 107.97937 53.546234 280 50 361 50 C 372.822754 50 380.585693 43.105774 380 24 C 379.349335 2.77475 368 2 368 2 C 368 2 178 1 90 1 C 66 1 62.673248 7.107605 52 17 C 46.091995 22.475784 39 38 39 38 C 39 38 15.007141 36.784698 12 39 C 9.757431 40.652054 2.191589 64.352341 2 77 C 1.789154 90.918808 9.576881 109.396088 12 113 C 14.28141 116.393158 36.581589 112.763031 40 115 C 41.96875 116.28833 45 126 45 126 L 77 126 Z"></path>
-            <path id="cap-shadow" fill="#1c1b1a" fill-rule="evenodd" stroke="none" opacity="0.05" d="M 76 125 C 76 125 74.270782 96.510635 78 83 C 80.729874 73.109894 82.820953 68.178787 88 62 C 90.441681 59.08699 93.091202 56.269684 96.396851 54.48674 C 98.09758 53.569427 100.731613 53.206726 103 53 C 107.97937 52.546234 280 49 361 49 C 365.019745 49 369.502441 48.034805 372.348633 45.440735 C 377.873596 40.405197 378 33 378 33 C 378 33 197 35 109 35 C 97.960007 35 84.454651 40.943253 76.994202 48.5215 C 68.236282 57.417709 65.296387 68.567078 63 75 C 58.031342 88.918808 59 125 59 125 Z"></path>
-            <path id="shadows" fill="#f2f2f2" fill-rule="evenodd" stroke="none" d="M 78 121 L 1209 121 L 1209 109 L 78 109 Z M 1212 111 L 1278 111 L 1278 99 L 1212 99 Z"></path>
-            <path id="dividers" fill="none" stroke="#c8c8c8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M 338 53 L 338 121 L 338 121 M 354 53 L 354 121 L 354 121 M 1211 37 L 1211 111 L 1211 111 M 1020 29 L 1020 120 L 1020 120"></path>
-            </g>
-        </symbol> #}
         <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1357 103" id="pen-brush">
             <g id="brush">
             <path id="body" fill="#ffffff" fill-rule="evenodd" stroke="#c8c8c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M 1281.816406 98 L 79.060631 98 L 78 4 L 1281.816406 4 L 1281.816406 11 L 1355 11 L 1355 88 L 1281.816406 88 L 1281.816406 98 Z"></path>

@@ -18,7 +18,7 @@ const all = {
 	MARIGOLD: { name: 'Marigold', color: 'e26650', code: 'MMGO' },
 	CITRUS_GREEN: { name: 'Citrus Green', color: 'e3e766', code: 'MCG' },
 	SUMMER_GREEN: { name: 'Summer Green', color: '64bda7', code: 'MSG' },
-	LAVENDER: { name: 'Lavender', color: '64649e', code: 'MLV' },
+	LAVENDER: { name: 'Lavender', color: '64649e', code: 'MLV', lightText: true },
 	LEMON_YELLOW: { name: 'Lemon Yellow', color: 'fdf284', code: 'MLY' },
 	APRICOT: { name: 'Apricot', color: 'f2b071', code: 'MAP' },
 	CORAL_PINK: { name: 'Coral Pink', color: 'feb2b8', code: 'MCOP' },
@@ -40,13 +40,8 @@ const all = {
 	MIMOSA_YELLOW: { name: 'Mimosa Yellow', color: 'd3ce99', code: 'MMY' },
 	MINT: { name: 'Mint', color: 'c5d7d0', code: 'MM' },
 	MOSS_GREEN: { name: 'Moss Green', color: '96bab6', code: 'MMOG' },
+    DEEP_GRAY: { name: 'Deep Gray', color: '2d2d2d', code: null, lightText: true },
 }
-
-// codes
-// WKT7 - highlighter
-// WYT9 - fine
-// WKS23 - Q1/2/etc
-// WFT8 - brush
 
 const stepsExample = [
     '10% { color: hsl(360, 65%, 45%); }',
@@ -124,7 +119,7 @@ let data = [
         prefix: 'WYT9',
         sets: {
             A: [
-                all.GRAY, all.BROWN, all.DARK_BLUE, all.RED, all.DARK_GRAY,    
+                all.GRAY, all.BROWN, all.DARK_BLUE, all.RED, all.DEEP_GRAY,
             ],
             B: [
                 all.GOLD, all.APRICOT, all.FUCHSIA, all.VIOLET, all.SUMMER_GREEN,
@@ -202,7 +197,7 @@ let data = [
                 all.BEIGE, all.COPPER, all.BROWN, all.CREAM,
             ],
             Grays: [
-                all.COOL_GRAY, all.GRAY, all.DARK_GRAY,
+                all.COOL_GRAY, all.GRAY, all.DARK_GRAY, all.DEEP_GRAY,
             ],
         }
     }

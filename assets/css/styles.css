@@ -205,6 +205,10 @@ h2.with-icon {
     flex-direction: column;
 }
 
+.mildliner-info.light-text {
+    color: #dfdfd6;
+}
+
 .mildliner-metadata {
     font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
     font-weight: normal;
@@ -262,4 +266,82 @@ h2.with-icon {
 .available-in svg {
     width: 22px;
     height: 22px;
+}
+
+.print-header {
+    display: none;
+}
+
+@media print {
+    @page { margin: 1em 2em; }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-size: 1em;
+        background-color: white;
+    }
+
+    .mildliner-wrap {
+        margin-top: 0!important;
+    }
+
+    .mildliner-bg {
+        width: 10%;
+    }
+
+    .mildliner-info {
+        justify-content: flex-start;
+        flex-direction: row;
+        text-align: left;
+        margin-left: 12%;
+    }
+
+    .mildliner,
+    #by-mildliner .mildliner {
+        height: auto!important;
+    }
+
+    header,
+    input,
+    label,
+    .mildliner-svg,
+    .mildliner-color, 
+    .mildliner-metadata,
+    .color-peek,
+    .type-info,
+    .key {
+        display: none;
+    }
+
+    h1 {
+        text-align: left!important;
+        font-size: 1em;
+    }
+
+    h2 {
+        font-size: 0.7em;
+    }
+
+    .type-container-inner {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .available-in {
+        margin-left: 1em;
+    }
+    .available-in svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .print-header {
+        display: block;
+        text-align: center!important;
+    }
+
+    .mildliner-info.light-text {
+        color: #1c1b1a;
+    }
 }

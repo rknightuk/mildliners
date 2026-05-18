@@ -252,21 +252,21 @@ module.exports = function () {
         ],
         mix: {
             Warm: [
-                [all.RED, all.GOLD],
-                [all.MAGENTA, all.APRICOT],
-                [all.CORAL_PINK, all.LEMON_YELLOW],
+                [all.RED, all.GOLD, 11],
+                [all.MAGENTA, all.APRICOT, 4],
+                [all.CORAL_PINK, all.LEMON_YELLOW, 2],
             ],
             Cool: [
-                [all.LAVENDER, all.SUMMER_GREEN],
-                [all.LAVENDER, all.FUCHSIA],
-                [all.FUCHSIA, all.PINK],
+                [all.LAVENDER, all.SUMMER_GREEN, 6],
+                [all.LAVENDER, all.FUCHSIA, 3],
+                [all.FUCHSIA, all.PINK, 7],
             ],
             Other: [
-                [all.SUMMER_GREEN, all.BLUE],
-                [all.CYAN, all.SHERBET_YELLOW],
-                [all.VIOLET, all.BLUE],
-                [all.MARIGOLD, all.CITRUS_GREEN],
-                [all.CYAN, all.BLUE],
+                [all.SUMMER_GREEN, all.BLUE, 1],
+                [all.CYAN, all.SHERBET_YELLOW, 5],
+                [all.VIOLET, all.BLUE, 8],
+                [all.MARIGOLD, all.CITRUS_GREEN, 9],
+                [all.CYAN, all.BLUE, 10],
             ],
         },
     }

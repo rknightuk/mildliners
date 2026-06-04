@@ -152,9 +152,9 @@ let data = [
                 { ...all.SODA_BLUE, note: 'Cotton scent' },
                 { ...all.OLIVE, note: 'Green scent' },
                 { ...all.SHERBET_YELLOW, note: 'Citrus scent' },
-                { ...all.CITRUS_GREEN, note: 'White Bloom scent' },
-                { ...all.COOL_GRAY, note: 'Wood scent' },
-                { ...all.BEIGE, note: 'Flower Bouquet scent' },
+                { ...all.COOL_GRAY, note: 'White Bloom scent' },
+                { ...all.BEIGE, note: 'Wood scent' },
+                { ...all.DUSTY_PINK, note: 'Flower Bouquet scent' },
             ]
         }
     },
